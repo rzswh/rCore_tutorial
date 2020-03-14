@@ -104,7 +104,7 @@ fn try_serial() -> bool {
 pub fn disable_and_store() -> usize {
     let sstatus: usize;
     unsafe {
-        asm!("csrci sstatus, 1 << 1" : "=r"(sstatus) ::: "volatile");
+        asm!("csrrci $0, sstatus, 1 << 1" : "=r"(sstatus) ::: "volatile");
     }
     sstatus
 }
